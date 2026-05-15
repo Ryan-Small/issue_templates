@@ -1,0 +1,138 @@
+name: Feature request
+description: Propose a new capability or an enhancement to an existing one
+title: "[Feature] "
+type: Feature
+labels:
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Features drive new (or revised) specs, executable Gherkin scenarios, and any ADRs the design choices require. The clearer the intake, the smoother the refinement into those artifacts.
+
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Problem statement
+      description: What user or business problem are we solving? Keep solution-agnostic.
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One- or two-sentence description of the capability being proposed.
+      placeholder: "Support OSV ingestion for the PyPI ecosystem in addition to Maven."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Problem / motivation
+      description: Why does this matter? What problem does it solve? Who benefits?
+    validations:
+      required: true
+
+  - type: textarea
+    id: approach
+    attributes:
+      label: Proposed approach (optional)
+      description: If you have a sense of how this should work, sketch it here.
+        Otherwise this is where refinement will land.
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria — initial draft (optional)
+      description: |
+        Scenarios that would prove this feature works. Gherkin format if you can; bullet points if not. These will be refined and end up in `docs/features/<name>.feature`.
+      placeholder: |
+        Scenario: PyPI SBOM yields matches
+          Given an SBOM with a PyPI component "requests==2.30.0"
+          When I GET /sboms/{id}/matches for that SBOM
+          Then the matches list has at least 1 entry
+      render: gherkin
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria (ISO 8.3.3)
+      description: How will we know this is done? Use Given/When/Then or a checklist.
+      value: |
+        - [ ] Given … when … then …
+        - [ ] Given … when … then …
+        - [ ] Given … when … then …
+      render: markdown
+    validations:
+      required: true
+
+  - type: input
+    id: related
+    attributes:
+      label: Related specs or ADRs
+      description: Paths to existing artifacts under `docs/` that this feature
+        touches, extends, or supersedes.
+      placeholder: "docs/specs/ingestion-osv.md,
+        docs/decisions/0004-maven-ecosystem-v0.1.0.md"
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: What this feature is NOT — things deliberately deferred to keep
+        scope tight.
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User story (ISO 8.2.2)
+      description: Frame the need from the user's perspective.
+      value: |
+        **As a** <role>
+        **I want** <capability>
+        **So that** <outcome>
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: business-value
+    attributes:
+      label: Business value / justification
+      description: Why does this matter? Customer ask, revenue, risk reduction,
+        compliance, etc.
+      placeholder: "Two paying customers blocked on this; estimated $40k ARR."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Triage may adjust this.
+      options:
+        - P0 — Critical (drop everything)
+        - P1 — High (this release)
+        - P2 — Medium (next 1–2 releases)
+        - P3 — Low (backlog)
+      default: 2
+    validations:
+      required: true
+
+  - type: input
+    id: requirement-id
+    attributes:
+      label: Requirement ID (optional, ISO 8.2)
+      description: If this traces to an existing REQ-### or external spec, link it here.
+      placeholder: "REQ-247 or https://…"
+
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Definition of Ready
+      options:
+        - label: User story and acceptance criteria are clear and testable
+        - label: I have searched existing issues and this is not a duplicate
+          required: true
