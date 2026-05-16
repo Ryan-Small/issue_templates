@@ -1,6 +1,7 @@
 name: Feature request
 description: Propose a new capability or an enhancement to an existing one
 title: "[Feature] "
+type: Feature
 labels:
   - needs-triage
 body:
